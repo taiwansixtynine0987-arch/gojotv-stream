@@ -1,0 +1,28 @@
+name = "gojotv-stream"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Queue consumer — W2 pushes StreamJob here
+[[queues.consumers]]
+queue = "stream-sync-queue"
+max_batch_size = 1
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "stream-dlq"
+
+# Producer (for retry cascade / future features)
+[[queues.producers]]
+queue = "stream-sync-queue"
+binding = "STREAM_QUEUE"
+
+# Environment variables
+[vars]
+ANIVEXA_BASE = "https://anivexa-api-5qmy.onrender.com"
+TATAKAI_BASE = "https://tatakai-api-2qqx.onrender.com"
+API_TIMEOUT_MS = "25000"
+CONCURRENCY = "5"
+
+# Secrets (set separately via wrangler secret put):
+# - SUPABASE_URL
+# - SUPABASE_SERVICE_ROLE_KEY
