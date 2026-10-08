@@ -18,7 +18,7 @@ binding = "STREAM_QUEUE"
 
 # Environment variables
 [vars]
-ANIVEXA_BASE = "https://anivexa-api-5qmy.onrender.com"
+ANIVEXA_BASE = "https://anivexa-api-6arq.onrender.com"
 TATAKAI_BASE = "https://tatakai-api-2qqx.onrender.com"
 API_TIMEOUT_MS = "25000"
 CONCURRENCY = "5"
